@@ -1,0 +1,2 @@
+Replace /src/assets/images/portrait-placeholder.svg with your transparent portrait asset, then update image references to /images/your-file.webp if desired.
+Project mockups are intentionally local SVG placeholders in public/projects/ and should be replaced with the real screenshots.
