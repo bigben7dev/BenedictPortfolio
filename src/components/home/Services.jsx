@@ -6,7 +6,15 @@ import SectionLabel from "../ui/SectionLabel";
 
 export default function Services() {
   return (
-    <SectionWrapper className="bg-ivory">
+    <SectionWrapper
+      className="bg-white
+    text-dark-text
+    transition-colors
+    duration-300
+    dark:bg-[#14202A]
+    dark:text-white
+  "
+    >
       <div className="container-shell">
         <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <div>

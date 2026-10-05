@@ -7,6 +7,8 @@ import {
   MessageCircle,
 } from "lucide-react";
 
+import { useTheme } from "../../context/ThemeContext";
+
 const navItems = [
   { to: "/", label: "Home", Icon: House, end: true },
   { to: "/services", label: "Services", Icon: Layers3 },
@@ -15,22 +17,48 @@ const navItems = [
 ];
 
 export function BottomNavbar() {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+
+  const navbarStyle = {
+    backgroundColor: isDark ? "#F5F1E8" : "#0D1B24",
+    borderColor: isDark
+      ? "rgba(31, 41, 51, 0.12)"
+      : "rgba(255, 255, 255, 0.12)",
+  };
+
+  const inactiveColor = isDark ? "#1F2933" : "#FFFFFF";
+
   return (
     <nav
       aria-label="Mobile navigation"
       className="fixed inset-x-3 bottom-3 z-50 lg:hidden"
     >
-      <div className="mx-auto flex max-w-xl items-center justify-around rounded-2xl border border-navy/90 bg-white/90 px-2 py-2 shadow-2xl backdrop-blur-1xl">
+      <div
+        style={navbarStyle}
+        className="
+          mx-auto flex max-w-xl items-center justify-around
+          rounded-2xl border px-2 py-2
+          shadow-2xl backdrop-blur-xl
+          transition-colors duration-300
+        "
+      >
         {navItems.map(({ to, label, Icon, end }) => (
           <NavLink
             key={to}
             to={to}
             end={end}
-            className={({ isActive }) =>
-              `flex min-w-0 flex-1 flex-col items-center justify-center gap-1 rounded-xl px-1 py-2 text-[10px] transition-colors duration-200 ${
-                isActive ? "text-blue" : "text-white/65 hover:text-white"
-              }`
-            }
+            style={({ isActive }) => ({
+              color: isActive ? "#2F80FF" : inactiveColor,
+            })}
+            className="
+              flex min-w-0 flex-1 flex-col
+              items-center justify-center
+              gap-1 rounded-xl px-1 py-2
+              text-[10px]
+              transition-opacity duration-200
+              hover:opacity-70
+            "
           >
             {({ isActive }) => (
               <>
@@ -39,6 +67,7 @@ export function BottomNavbar() {
                   strokeWidth={isActive ? 2.4 : 1.8}
                   aria-hidden="true"
                 />
+
                 <span>{label}</span>
               </>
             )}
@@ -47,14 +76,29 @@ export function BottomNavbar() {
 
         <NavLink
           to="/contact"
-          className={({ isActive }) =>
-            `flex min-w-0 flex-1 flex-col items-center justify-center gap-1 rounded-xl px-1 py-2 text-[10px] transition-colors duration-200 ${
-              isActive ? "text-white" : "text-blue"
-            }`
-          }
+          style={({ isActive }) => ({
+            color: isActive ? "#2F80FF" : inactiveColor,
+          })}
+          className="
+            flex min-w-0 flex-1 flex-col
+            items-center justify-center
+            gap-1 rounded-xl px-1 py-2
+            text-[10px]
+            transition-opacity duration-200
+            hover:opacity-70
+          "
         >
-          <MessageCircle size={20} aria-hidden="true" />
-          <span>Contact</span>
+          {({ isActive }) => (
+            <>
+              <MessageCircle
+                size={20}
+                strokeWidth={isActive ? 2.4 : 1.8}
+                aria-hidden="true"
+              />
+
+              <span>Contact</span>
+            </>
+          )}
         </NavLink>
       </div>
     </nav>

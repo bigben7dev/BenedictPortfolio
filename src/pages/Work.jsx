@@ -6,51 +6,137 @@ import { ArrowUpRight } from "lucide-react";
 
 export default function Work() {
   return (
-    <>
-      <main className="min-h-screen bg-ivory pt-28">
-        <SectionWrapper className="pb-16">
-          <div className="container-shell">
-            <SectionLabel>Selected work</SectionLabel>
-            <h1 className="display-font mt-2 max-w-3xl text-6xl font-semibold leading-[.9]">
-              Projects built around real problems.
-            </h1>
-            <p className="mt-5 max-w-2xl text-base leading-7 text-muted">
-              A selection of websites, commerce experiences and product
-              concepts. Each case study focuses on the problem, the solution and
-              the thinking behind the build.
-            </p>
-            <div className="mt-12 grid gap-6 md:grid-cols-2">
-              {projects.map((p) => (
-                <Link
-                  key={p.id}
-                  to={`/work/${p.slug}`}
-                  className="group overflow-hidden rounded-3xl border border-border-warm bg-white/50"
+    <main
+      className="
+        min-h-screen
+        bg-ivory
+        pt-28
+        text-dark-text
+        transition-colors
+        duration-300
+        dark:bg-navy
+        dark:text-white
+      "
+    >
+      <SectionWrapper className="pb-16">
+        <div className="container-shell">
+          <SectionLabel>Selected work</SectionLabel>
+
+          <h1 className="display-font mt-2 max-w-3xl text-6xl font-semibold leading-[.9]">
+            Projects built around real problems.
+          </h1>
+
+          <p
+            className="
+              mt-5
+              max-w-2xl
+              text-base
+              leading-7
+              text-muted
+              transition-colors
+              duration-300
+              dark:text-white/60
+            "
+          >
+            A selection of websites, commerce experiences and product concepts.
+            Each case study focuses on the problem, the solution and the
+            thinking behind the build.
+          </p>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            {projects.map((p) => (
+              <Link
+                key={p.id}
+                to={`/work/${p.slug}`}
+                className="
+                  group
+                  overflow-hidden
+                  rounded-3xl
+                  border
+                  border-border-warm
+                  bg-white/50
+                  shadow-sm
+                  transition-all
+                  duration-300
+                  hover:-translate-y-1
+                  hover:shadow-md
+                  dark:border-white/10
+                  dark:bg-[#14202A]
+                  dark:shadow-none
+                  dark:hover:border-white/15
+                  dark:hover:bg-[#162733]
+                "
+              >
+                {/* Project image */}
+                <div
+                  className="
+                    aspect-[16/9]
+                    overflow-hidden
+                    bg-navy
+                    dark:bg-[#0D1B24]
+                  "
                 >
-                  <div className="aspect-[16/9] overflow-hidden bg-navy">
-                    <img
-                      src={p.image}
-                      alt=""
-                      className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <p className="text-xs font-semibold text-blue">
-                      {p.category}
-                    </p>
-                    <h2 className="mt-2 text-2xl font-semibold">{p.title}</h2>
-                    <p className="mt-3 max-w-xl text-sm leading-6 text-muted">
-                      {p.description}
-                    </p>
-                    <span className="mt-5 inline-flex items-center gap-1 text-xs font-semibold">
-                      View case study <ArrowUpRight size={13} />
-                    </span>
-                  </div>
-                </Link>
-              ))}
-            </div>
+                  <img
+                    src={p.image}
+                    alt={p.title}
+                    className="
+                      h-full
+                      w-full
+                      object-cover
+                      transition
+                      duration-700
+                      group-hover:scale-[1.03]
+                    "
+                  />
+                </div>
+
+                {/* Project content */}
+                <div className="p-6">
+                  <p className="text-xs font-semibold text-blue">
+                    {p.category}
+                  </p>
+
+                  <h2 className="mt-2 text-2xl font-semibold">{p.title}</h2>
+
+                  <p
+                    className="
+                      mt-3
+                      max-w-xl
+                      text-sm
+                      leading-6
+                      text-muted
+                      transition-colors
+                      duration-300
+                      dark:text-white/60
+                    "
+                  >
+                    {p.description}
+                  </p>
+
+                  <span
+                    className="
+                      mt-5
+                      inline-flex
+                      items-center
+                      gap-1
+                      text-xs
+                      font-semibold
+                      text-dark-text
+                      transition-all
+                      duration-200
+                      group-hover:gap-2
+                      dark:text-white
+                    "
+                  >
+                    View case study
+                    <ArrowUpRight size={13} />
+                  </span>
+                </div>
+              </Link>
+            ))}
           </div>
-        </SectionWrapper>
-      </main>
-    </>
+        </div>
+      </SectionWrapper>
+    </main>
   );
 }
