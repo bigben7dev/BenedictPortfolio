@@ -66,9 +66,7 @@ export default function Navbar() {
             className="block h-10 w-auto max-w-[150px] object-contain object-left"
           />
 
-          <span className="text-xl font-bold text-dark-text dark:text-white">
-            BENEDICT EKEH
-          </span>
+          <span className="text-xl font-bold text-white">BENEDICT EKEH</span>
         </Link>
 
         <ThemeToggle />
